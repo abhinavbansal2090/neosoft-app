@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from "./component/Navbar"
 import Carousel from "./component/Carousel"
 import Login from "./component/Login"
+import Map   from "./component/Map"
 
 var details = {
   projectname:"technical shop",
@@ -14,7 +15,7 @@ function App() {
     <div>
     <Navbar details= {details}></Navbar>
     <Carousel></Carousel>
-    <Login></Login>
+    <Map />
     </div>
   );
 }
