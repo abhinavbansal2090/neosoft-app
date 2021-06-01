@@ -1,9 +1,17 @@
+import {useState} from "react"
+
 function Navbar(props) {
 
-  let stringsearch
+//var [isloggin,setUser] = useState(props.isloggin)
+
+let stringsearch
 
   let string = (event)=>{
     stringsearch = event.target.value
+  }
+
+  let logout=()=>{
+    //setUser(false)
   }
 
 
@@ -46,6 +54,8 @@ function Navbar(props) {
     <form class="form-inline my-2 my-lg-0">
       <input  onChange= {string} class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
       <button onClick= {search} class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
+    {!props.isloggin && <button className="btn-btn-primary">Login</button> }
+    { props.isloggin && <button onClick=""    className="btn-btn-danger">Logout</button> }
     </form>
   </div>
 </nav>

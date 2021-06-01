@@ -6,8 +6,8 @@ const defaultState = {
 }
 class Login extends Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = defaultState;
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -26,6 +26,12 @@ class Login extends Component{
             return false;
         }
         return true;
+    }
+
+    login = ()=>{
+
+      this.props.call()
+
     }
 
     submit(){
@@ -53,6 +59,7 @@ class Login extends Component{
                             <div className="form-row">
                                 <div className="col-md-12 text-center">
                                     <button type="submit" className="btn btn-primary" onClick={()=>this.submit()}>Submit</button>
+                                    <button onClick={this.login} className="btn btn-primary" >Login</button>
                                 </div>
                             </div>
 
