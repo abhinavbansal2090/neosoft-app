@@ -6,7 +6,6 @@ if(props.data){
         <div class="card-body">
           <h5 class="card-title">{props.data.name}</h5>
           <p class="card-text">{props.data.price}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
     )
