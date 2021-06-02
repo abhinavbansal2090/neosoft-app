@@ -1,10 +1,27 @@
-import list from "./data"
+//import list from "./data"
 import Cake from "./Cake"
+import {useState} from "react"
+//import React from 'react';
+import axios from 'axios';
+import { useEffect } from "react";
+
 
 function Map(){
+  var url = "http://apibyashu.herokuapp.com/api/allcakes"
+  var [allcakes,setList] = useState([])
+  useEffect(()=>{
+  axios({
+    url:url,
+    method:"get",
+  }).then((response)=>{
+    setList(response.data.data)
+  },(error)=>{
+    console.log(error)
+  })
+},[])
   return(
     <div className="row">
-    {list.map((each,index)=>{
+    {allcakes.map((each,index)=>{
       return(
         <Cake data={each} Key={index} />)
     })}

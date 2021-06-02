@@ -22,7 +22,7 @@ function App() {
     <Navbar  isloggin={login} details= {details}></Navbar>
     <Carousel></Carousel>
     <Login  call={callme} />
-    <Map />
+    <Map></Map>
     </div>
   );
 }
