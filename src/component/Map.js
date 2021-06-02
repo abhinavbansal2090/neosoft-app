@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 
 function Map(){
-  var url = "http://apibyashu.herokuapp.com/api/allcakes"
+  var url = "https://apibyashu.herokuapp.com/api/allcakes"
   var [allcakes,setList] = useState([])
   useEffect(()=>{
   axios({
