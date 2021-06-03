@@ -4,7 +4,10 @@ import Navbar from "./component/Navbar"
 import Carousel from "./component/Carousel"
 import Login from "./component/Login"
 import Map   from "./component/Map"
+import Signup from "./component/Signup"
 import {useState} from "react"
+import {BrowserRouter as Router,Route,Switch} from "react-router-dom"
+import Pagenotfound from "./component/Pagenotfound"
 
 var details = {
   projectname:"technical shop",
@@ -19,10 +22,12 @@ function App() {
 
   return (
     <div>
-    <Navbar  isloggin={login} details= {details}></Navbar>
-    <Carousel></Carousel>
-    <Login  call={callme} />
-    <Map></Map>
+     <Router>
+       <Switch>
+        <Route exact path="/"><Login /></Route>
+        <Route exact path="/Signup" component={Signup} />
+       </Switch>
+    </Router>
     </div>
   );
 }

@@ -1,8 +1,6 @@
 
 import {Component} from 'react'
 import axios from 'axios';
-import Navbar from "./Navbar"
-import { Link } from 'react-router-dom';
 
 const defaultState = {
     name:null,
@@ -10,19 +8,14 @@ const defaultState = {
     password:null,
     emailError:null
 }
-
-var details = {
-  projectname:"technical shop",
-  projectdetails:"related to tech gadegts"
-}
-
-class Login extends Component{
+class Signup extends Component{
 
     constructor(){
         super();
         this.state = defaultState;
 
         this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handleNameChange = this.handleNameChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
     }
 
@@ -31,6 +24,13 @@ class Login extends Component{
             email : event.target.value
         });
     }
+
+    handleNameChange(event) {
+        this.setState({
+            name:event.target.value
+        });
+    }
+
     handlePasswordChange(event) {
         this.setState({
             password:event.target.value,
@@ -51,10 +51,11 @@ class Login extends Component{
         if(this.validate()){
 
           var data = {
+              name:this.state.name,
               email: this.state.email,
               password: this.state.password
             };
-            var url = "https://apibyashu.herokuapp.com/api/login"
+            var url = "https://apibyashu.herokuapp.com/api/register"
 
             axios({
               url:url,
@@ -62,7 +63,6 @@ class Login extends Component{
               data:data
             }).then((response)=>{
               console.log(response.data)
-              //history.push('/Signup');
             },(error)=>{
               console.log(error)
             })
@@ -74,13 +74,16 @@ class Login extends Component{
     render(){
         return(
             <div>
-                 <Navbar   details= {details}></Navbar>
                 <div className="row" style={{marginTop:"25px"}}>
                     <div className="col-md-6 offset-md-3">
 
-                        <h3>Login</h3><br/>
+                        <h3>Signup</h3><br/>
 
                             <div className="form-row">
+                                <div className="form-group col-md-6">
+                                    <label>Name</label>
+                                    <input type="text" className="form-control" name="name" value={this.state.name} onChange={this.handleNameChange} />
+                                </div>
                                 <div className="form-group col-md-6">
                                     <label>Email</label>
                                     <input type="email" className="form-control" name="email" value={this.state.email} onChange={this.handleEmailChange} />
@@ -94,8 +97,7 @@ class Login extends Component{
 
                             <div className="form-row">
                                 <div className="col-md-12 text-center">
-                                    <button type="submit" className="btn btn-primary" onClick={()=>this.submit()} style={{margin:"10px"}}>Login</button>
-                                    <Link to='/Signup'><button className="btn btn-primary">Signup</button></Link>
+                                    <button type="submit" className="btn btn-primary" onClick={()=>this.submit()}>Submit</button>
                                 </div>
                             </div>
 
@@ -106,4 +108,4 @@ class Login extends Component{
     }
 }
 
-export default Login;
+export default Signup;
