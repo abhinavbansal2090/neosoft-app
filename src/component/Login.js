@@ -3,6 +3,7 @@ import {Component} from 'react'
 import axios from 'axios';
 import Navbar from "./Navbar"
 import { Link } from 'react-router-dom';
+import { withRouter } from "react-router"
 
 const defaultState = {
     name:null,
@@ -18,8 +19,8 @@ var details = {
 
 class Login extends Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = defaultState;
 
         this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -62,7 +63,7 @@ class Login extends Component{
               data:data
             }).then((response)=>{
               console.log(response.data)
-              //history.push('/Signup');
+              this.props.history.push('/Map');
             },(error)=>{
               console.log(error)
             })
@@ -106,4 +107,4 @@ class Login extends Component{
     }
 }
 
-export default Login;
+export default withRouter(Login)

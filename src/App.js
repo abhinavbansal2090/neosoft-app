@@ -8,6 +8,8 @@ import Signup from "./component/Signup"
 import {useState} from "react"
 import {BrowserRouter as Router,Route,Switch} from "react-router-dom"
 import Pagenotfound from "./component/Pagenotfound"
+import Cakedetails from "./component/Cakedetails"
+import Search from "./component/Search"
 
 var details = {
   projectname:"technical shop",
@@ -26,6 +28,9 @@ function App() {
        <Switch>
         <Route exact path="/"><Login /></Route>
         <Route exact path="/Signup" component={Signup} />
+        <Route exact path="/cake/:cakeid" component={Cakedetails} />
+        <Route exact path="/search" component={Search} />
+        <Route exact path="/Map" component={Map} />
        </Switch>
     </Router>
     </div>

@@ -1,4 +1,5 @@
 import {useState} from "react"
+import { withRouter } from "react-router"
 
 function Navbar(props) {
 
@@ -16,8 +17,15 @@ let stringsearch
 
 
   let search = (event)=>{
+
+    if(stringsearch)
+    {
+      var url = "/search?q="+ stringsearch
+      props.history.push(url)
+    }
+
     //alert("search")
-    alert(stringsearch)
+    //alert(stringsearch)
   }
 
   return (
@@ -63,4 +71,4 @@ let stringsearch
   )
 }
 
-export default Navbar
+export default withRouter(Navbar)
