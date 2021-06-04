@@ -7,7 +7,7 @@ import {useParams} from "react-router-dom"
 
 function Cakedetails(props){
   var params = useParams()
-  var url = "http://apibyashu.herokuapp.com/api/cake/"+params.cakeid
+  var url = "https://apibyashu.herokuapp.com/api/cake/"+params.cakeid
   var [searchcakes,setList] = useState([])
 
   useEffect(()=>{
