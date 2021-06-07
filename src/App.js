@@ -10,17 +10,44 @@ import {BrowserRouter as Router,Route,Switch} from "react-router-dom"
 import Pagenotfound from "./component/Pagenotfound"
 import Cakedetails from "./component/Cakedetails"
 import Search from "./component/Search"
+import Checkout from "./component/Checkout"
+import React from "react"
 
-var details = {
-  projectname:"technical shop",
-  projectdetails:"related to tech gadegts"
-}
+//console.log(process.env)
+
 function App() {
   var [login,setLogin] = useState(false)
 
   var callme = ()=> {
   setLogin(true )
   }
+
+
+
+  /*var url = process.env.REACT_APP_BASE_URL+"/getuserDetails"
+  useEffect(()=>{
+    if(localstorage.token)
+      {
+          axios({
+            url:url,
+            method:"get",
+            headers:{
+              authtoken:localstorage.token
+            }
+          }).then((response)=>{
+                console.log(response.data.data)
+          },(error)=>{
+            console.log(error)
+          })
+    }
+  },[])
+*/
+
+  var details = {
+    projectname:"technical shop",
+    projectdetails:"related to tech gadegts"
+  }
+
 
   return (
     <div>
@@ -31,6 +58,7 @@ function App() {
         <Route exact path="/cake/:cakeid" component={Cakedetails} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/Map" component={Map} />
+        <Route path="/Checkout" component={Checkout} />
        </Switch>
     </Router>
     </div>
