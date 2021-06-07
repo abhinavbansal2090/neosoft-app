@@ -4,12 +4,14 @@ import axios from 'axios';
 import Navbar from "./Navbar"
 import { Link } from 'react-router-dom';
 import { withRouter } from "react-router"
+import {connect} from "react-redux"
 
 const defaultState = {
     name:null,
     email:null,
     password:null,
-    emailError:null
+    emailError:null,
+    res:null
 }
 
 var details = {
@@ -63,6 +65,14 @@ class Login extends Component{
               data:data
             }).then((response)=>{
               console.log(response.data)
+              if(response.data.email){
+                this.props.dispatch({
+                  type:"LOGIN",
+                  payload:{
+                    token:response.data.token
+                  }
+                })
+              }
               this.props.history.push('/Map');
             },(error)=>{
               console.log(error)
@@ -107,4 +117,6 @@ class Login extends Component{
     }
 }
 
-export default withRouter(Login)
+Login = withRouter(Login)
+
+export default connect()(Login)
