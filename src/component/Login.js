@@ -1,4 +1,3 @@
-
 import {Component} from 'react'
 import axios from 'axios';
 import Navbar from "./Navbar"
@@ -117,6 +116,15 @@ class Login extends Component{
     }
 }
 
-Login = withRouter(Login)
+Login =connect(function(state,props){
+//alert("props" + JSON.stringify(props))
+  if(state.AuthReducer?.isloggedin==true){
+      props.history.push("/")
+  }else{
+	  return {
+		  isloading:state.AuthReducer?.isloading
+	  }
+  }
+})(Login) 
 
-export default connect()(Login)
+export default withRouter(Login)
