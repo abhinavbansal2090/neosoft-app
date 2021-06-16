@@ -105,7 +105,7 @@ class Login extends Component{
                             <div className="form-row">
                                 <div className="col-md-12 text-center">
                                     <button type="submit" className="btn btn-primary" onClick={()=>this.submit()} style={{margin:"10px"}}>Login</button>
-                                    <Link to='/Signup'><button className="btn btn-primary">Signup</button></Link>
+                                    {/* <Link to='/Signup'><button className="btn btn-primary">Signup</button></Link> */}
                                 </div>
                             </div>
 
